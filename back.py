@@ -2,7 +2,7 @@ from flask import Flask, request, Response
 import jsonpickle
 import numpy as np
 import cv2
-from PIL import Imagecd
+from PIL import Image
 import pytesseract as tess
 import os
 
