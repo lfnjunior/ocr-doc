@@ -8,12 +8,16 @@ para Iniciar o Servidor é necessário abrir o CMD e navegar até o diretório /
 ```
 e então digitar "Activate" sem as aspas
 ```cmd
-> activate
+> . activate
 ```
 
 Antes de executar o servidor é necessário dizer ao flask onde iniciar o servidor;
 ```
+Windows
 > cd ..\.. && set FLASK_APP=back.py
+
+Linux
+> cd ..\.. && export FLASK_APP=back.py
 ```
 para executar o Servidor o comando é:
 ```cmd
