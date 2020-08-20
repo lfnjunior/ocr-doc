@@ -17,7 +17,7 @@ Windows
 > cd ..\.. && set FLASK_APP=back.py
 
 Linux
-> cd ..\.. && export FLASK_APP=back.py
+> cd ../.. && export FLASK_APP=back.py
 ```
 para executar o Servidor o comando é:
 ```cmd

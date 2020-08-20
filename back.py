@@ -1,20 +1,20 @@
 from flask import Flask, request, Response
+from flask_cors import CORS
 import jsonpickle
 import numpy as np
 import cv2
 from PIL import Image
 import pytesseract as tess
 import os
+import datetime as dt
+import magic
+
 
 # tess.pytesseract.tesseract_cmd = r'C:/Program Files\\Tesseract-OCR\\tesseract'
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+app = Flask(__name__) 
 
-app = Flask(__name__)
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+CORS(app)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -28,22 +28,19 @@ def upload_file():
         response_pickled = jsonpickle.encode(response)
         return Response(response=response_pickled, status=400, mimetype="application/json")
 
-    print('0')
     file = request.files['image']
 
-    filename = file.filename
-
-    print('1')
-    if not allowed_file(filename):
+    if file.content_type != 'image/jpeg':
         # constroi o objeto de resposta
         response = {'message': "this extension is not allowed"}
-
+    
         # Transforma o objeto response em um json para retornar ao cliente
         response_pickled = jsonpickle.encode(response)
         return Response(response=response_pickled, status=400, mimetype="application/json")
 
-    
-    print('3')
+    date = dt.datetime.now()
+    filename = date.strftime("%m%d%Y%H%M%S")+".jpeg"
+
     file.save('./uploads/{}'.format(filename))
 
     print('4')
