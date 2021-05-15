@@ -19,6 +19,14 @@ Windows
 Linux
 > cd ../.. && export FLASK_APP=back.py
 ```
+Caso queira que o que servidor atualize sozinho com as alterações nos arquivos utilize:
+```
+Windows
+> set FLASK_ENV=development
+
+Linux
+> export FLASK_ENV=development
+```
 para executar o Servidor o comando é:
 ```cmd
 > flask run --host=127.0.0.1
